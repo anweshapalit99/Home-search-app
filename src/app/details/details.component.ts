@@ -28,7 +28,7 @@ import { HousingLocation } from '../housinglocation';
     </section>
     <section class="listing-apply">
       <h2 class="section-heading">Apply now to live here</h2>
-      <form [formGroup]="applyForm" (submit)="submitApplication()">
+      <form [formGroup]="applyForm" (submit)="submitApplicationFromDetails()">
         <label for="first-name">First Name</label>
         <input id="first-name" type="text" formControlName="firstName">
 
@@ -61,7 +61,7 @@ export class DetailsComponent {
     this.housingService.getHousingLocationById(housingLocationId).then((housingLocation)=>{this.housingLocation = housingLocation})
   }
 
-  submitApplication() {
+  submitApplicationFromDetails() {
     this.housingService.submitApplication(
       this.applyForm.value.firstName ?? '',
       this.applyForm.value.lastName ?? '',
